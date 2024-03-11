@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int	ft_print_pointer(unsigned long long pointer);
+int	ft_print_pointer(void *pointer);
 
-int	ft_print_pointer(unsigned long long pointer)
+int	ft_print_pointer(void *pointer)
 {
 	int	written_chars;
 	int	adress_hexa;
 
-	if (ft_print_string("0x" == -1))
+	if (ft_print_string("0x") == -1)
 		return (-1);
 	written_chars = 2;
 	adress_hexa = ft_print_hexadecimal((unsigned long)pointer, 'x');
