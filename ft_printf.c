@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 
 int	ft_printf(const char *format, ...);
-int	print_argument(char c, va_list arguments);
+static int	print_argument(char c, va_list arguments);
 
 int	ft_printf(const char *format, ...)
 {
@@ -51,7 +51,7 @@ static int	print_argument(const char flag, va_list list_args)
 	else if (flag == 's')
 		return (ft_print_string(va_arg(list_args, char *)));
 	else if (flag == 'p')
-		return (ft_print_pointer(va_arg(list_args, unsigned long long)));
+		return (ft_print_pointer(va_arg(list_args, void *)));
 	else if (flag == 'd' || flag == 'i')
 		return (ft_print_number(va_arg(list_args, int)));
 	else if (flag == 'u')
@@ -63,9 +63,13 @@ static int	print_argument(const char flag, va_list list_args)
 	return (-1);
 }
 
-// #include <stdio.h>
+#include <stdio.h>
 
-// int	main(void)
-// {
-	
-// }
+int	main(void)
+{
+	char	*test_pointer = "Bonjour !";
+	int		test1 = ft_printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
+	ft_printf("Written chars : %d\n", test1);
+	int		test_printf = printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
+	printf("Written chars : %d\n", test_printf);
+}
