@@ -16,6 +16,5 @@ int	ft_print_character(int c);
 
 int	ft_print_character(int c)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
