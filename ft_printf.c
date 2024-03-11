@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 
+int	ft_printf(const char *format, ...);
 int	print_argument(char c, va_list arguments);
 
 int	ft_printf(const char *format, ...)
