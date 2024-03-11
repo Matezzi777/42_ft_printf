@@ -12,33 +12,30 @@
 
 #include "ft_printf.h"
 
-int	ft_print_hexadecimal(unsigned int n, char flag);
+int	ft_print_hexadecimal(unsigned long n, char flag);
 
-int	ft_print_hexadecimal(unsigned int n, char flag)
+int	ft_print_hexadecimal(unsigned long n, char flag)
 {
-	char	*base_hexa;
-	int		index;
-	char	result[20];
+	int		written_chars;
+	int		follow;
+	char	*base;
 
+	written_chars = 0;
 	if (flag == 'x')
-		base_hexa = "0123456789abcdef";
+		base = "0123456789abcdef";
 	else
-		base_hexa = "0123456789ABCDEF";
-	if (n == 0)
+		base = "0123456789ABCDEF";
+	if (n > 15)
 	{
-		ft_putchar_fd('0', 1);
-		return (1);
+		follow = ft_print_hexadecimal((n / 16), flag);
+		if (follow == -1)
+			return (-1);
+		written_chars += follow;
 	}
-	index = 0;
-	while (n != 0)
-	{
-		result[index] = base_hexa[n % 16];
-		n = n / 16;
-		index++;
-	}
-	result[index] = '\0';
-	ft_putstrrev_fd(result, 1);
-	return (ft_strlen(result));
+	if (write(1, &base[n%16], 1) == -1)
+		return (-1);
+	written_chars += 1;
+	return (written_chars);
 }
 
 // #include <stdio.h>
