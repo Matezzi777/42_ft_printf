@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			if (write(1, str, 1) == -1)
+			if (write(1, format, 1) == -1)
 				return (-1);
 			written_chars++;
 		}
