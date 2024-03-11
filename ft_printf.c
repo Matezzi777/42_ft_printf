@@ -55,7 +55,7 @@ static int	print_argument(const char flag, va_list list_args)
 	else if (flag == 'd' || flag == 'i')
 		return (ft_print_number(va_arg(list_args, int)));
 	else if (flag == 'u')
-		return (ft_print_unsigned(va_arg(list_args, unsigned int)));
+		return (ft_print_number(va_arg(list_args, unsigned int)));
 	else if (flag == 'x' || flag == 'X')
 		return (ft_print_hexadecimal(va_arg(list_args, unsigned int), flag));
 	else if (flag == '%')
