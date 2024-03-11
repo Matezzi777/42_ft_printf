@@ -1,8 +1,9 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
-# include <stdarg.h>
+# include <stdarg.h> //fonction variadique
+# include <stdlib.h> //malloc(), free()
+# include <unistd.h> //write()
 
 int	ft_print_character(int c);
 int	ft_print_hexadecimal(unsigned int number, char flag);
