@@ -32,7 +32,7 @@ int	ft_print_number(long number)
 	if (number > 9)
 	{
 		follow = ft_print_number(number / 10);
-		if (follow == -1);
+		if (follow == -1)
 			return (-1);
 		written_chars += follow;
 	}
