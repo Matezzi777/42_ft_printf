@@ -16,43 +16,50 @@ int	print_argument(char c, va_list arguments);
 
 int	ft_printf(const char *format, ...)
 {
+	va_list	list_args;
 	int		written_chars;
-	va_list	ap;
+	int		verif;
 
-	va_start(ap, format);
+	va_start(list_args, format);
 	written_chars = 0;
-	while (*format != '\0')
+	while (*format)
 	{
 		if (*format == '%')
-			written_chars += print_argument(*(format++), ap);
+		{
+			verif = print_argument(*(++format), list_args);
+			if (verif == -1)
+				return (-1);
+			written_chars += verif;
+		}
 		else
-			written_chars += write(1, format, 1);
-		++format;
+		{
+			if (write(1, str, 1) == -1)
+				return (-1);
+			written_chars++;
+		}
+		format++;
 	}
-	va_end(ap);
+	va_end(list_args);
 	return (written_chars);
 }
 
-int	print_argument(char flag, va_list ap)
+static int	print_argument(const char flag, va_list list_args)
 {
-	int	written_chars;
-
-	written_chars = 0;
 	if (flag == 'c')
-		written_chars += ft_print_character(va_arg(ap, int));
+		return (ft_print_character(va_arg(list_args, int)));
 	else if (flag == 's')
-		written_chars += ft_print_string(va_arg(ap, char *));
+		return (ft_print_string(va_arg(list_args, char *)));
 	else if (flag == 'p')
-		written_chars += ft_print_pointer(va_arg(ap, unsigned long long));
+		return (ft_print_pointer(va_arg(list_args, unsigned long long)));
 	else if (flag == 'd' || flag == 'i')
-		written_chars += ft_print_number(va_arg(ap, int));
+		return (ft_print_number(va_arg(list_args, int)));
 	else if (flag == 'u')
-		written_chars += ft_print_unsigned(va_arg(ap, unsigned int));
+		return (ft_print_unsigned(va_arg(list_args, unsigned int)));
 	else if (flag == 'x' || flag == 'X')
-		written_chars += ft_print_hexadecimal(va_arg(ap, unsigned int), flag);
+		return (ft_print_hexadecimal(va_arg(list_args, unsigned int), flag));
 	else if (flag == '%')
-		written_chars += ft_print_character('%');
-	return (written_chars);
+		return (ft_print_character('%'));
+	return (-1);
 }
 
 // #include <stdio.h>
