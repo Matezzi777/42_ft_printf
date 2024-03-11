@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+int	print_argument(char c, va_list arguments);
+
 int	ft_printf(const char *format, ...)
 {
 	int		written_chars;
@@ -41,7 +43,7 @@ int	print_argument(char flag, va_list ap)
 	else if (flag == 's')
 		written_chars += ft_print_string(va_arg(ap, char *));
 	else if (flag == 'p')
-		written_chars += ft_print_pointer(va_args(ap, unsigned long long));
+		written_chars += ft_print_pointer(va_arg(ap, unsigned long long));
 	else if (flag == 'd' || flag == 'i')
 		written_chars += ft_print_number(va_arg(ap, int));
 	else if (flag == 'u')
