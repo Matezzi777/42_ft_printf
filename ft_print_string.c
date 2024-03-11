@@ -16,16 +16,23 @@ int	ft_print_string(char *string);
 
 int	ft_print_string(char *string)
 {
-	if (string == NULL)
+	int	written_chars;
+
+	if (!string)
 	{
-		ft_putstr_fd("(null)", 1);
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
 		return (6);
 	}
-	else
+	written_chars = 0;
+	while (*string)
 	{
-		ft_putstr_fd(string, 1);
-		return (ft_strlen(string));
+		if (write(1, string, 1) == -1)
+			return (-1);
+		written_chars++;
+		string++;
 	}
+	return (written_chars);
 }
 
 // #include <stdio.h>
