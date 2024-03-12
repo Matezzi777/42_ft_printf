@@ -63,13 +63,13 @@ static int	print_argument(const char flag, va_list list_args)
 	return (-1);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	char	*test_pointer = "Bonjour !";
-	int		test1 = ft_printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
-	ft_printf("Written chars : %d\n", test1);
-	int		test_printf = printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
-	printf("Written chars : %d\n", test_printf);
-}
+// int	main(void)
+// {
+// 	char	*test_pointer = "Bonjour !";
+// 	int		test1 = ft_printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
+// 	ft_printf("Written chars : %d\n", test1);
+// 	int		test_printf = printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
+// 	printf("Written chars : %d\n", test_printf);
+// }
