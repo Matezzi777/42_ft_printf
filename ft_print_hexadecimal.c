@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hexadecimal.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmartina <mmartina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 07:35:40 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/07 07:35:40 by marvin           ###   ########.fr       */
+/*   Created: 2024/03/13 18:16:48 by mmartina          #+#    #+#             */
+/*   Updated: 2024/03/13 18:17:16 by mmartina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_print_hexadecimal(unsigned long n, char flag)
 			return (-1);
 		written_chars += follow;
 	}
-	if (write(1, &base[n%16], 1) == -1)
+	if (write(1, &base[n % 16], 1) == -1)
 		return (-1);
 	written_chars += 1;
 	return (written_chars);

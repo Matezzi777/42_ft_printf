@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmartina <mmartina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:24:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/01/22 15:24:05 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/13 18:16:29 by mmartina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...);
+int			ft_printf(const char *format, ...);
 static int	print_argument(char c, va_list arguments);
 
 int	ft_printf(const char *format, ...)
@@ -62,14 +62,3 @@ static int	print_argument(const char flag, va_list list_args)
 		return (ft_print_character('%'));
 	return (-1);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	*test_pointer = "Bonjour !";
-// 	int		test1 = ft_printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
-// 	ft_printf("Written chars : %d\n", test1);
-// 	int		test_printf = printf("%c %s %p %d %i %u %x %X %%\n", 'O', "Hello !", test_pointer, -42, -42, -42, 42, 42);
-// 	printf("Written chars : %d\n", test_printf);
-// }
