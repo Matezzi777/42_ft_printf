@@ -1,13 +1,13 @@
-##### VARIABLES #####
-NAME = libftprintf.a
+############################## VARIABLES ##############################
+##### COMMANDS #####
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
-SRC_DIR = srcs
-
 AR = ar rcs
 RM = rm -rdf
 
+################################ FILES ################################
+NAME = libftprintf.a
+SRC_DIR = srcs
 RAW_SRCS = ft_print_address.c \
 		ft_print_character.c \
 		ft_print_hexa.c \
@@ -19,6 +19,7 @@ RAW_SRCS = ft_print_address.c \
 SRCS = $(addprefix $(SRC_DIR)/, $(RAW_SRCS))
 OBJS = $(SRCS:.c=.o)
 
+################################ RULES ################################
 all: $(NAME)
 
 $(NAME): $(OBJS)

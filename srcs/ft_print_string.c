@@ -6,7 +6,7 @@
 /*   By: maxmart2 <maxmart2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:57:46 by maxmart2          #+#    #+#             */
-/*   Updated: 2025/04/13 16:28:12 by maxmart2         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:56:10 by maxmart2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	ft_print_string(char *str)
 
 	if (str == NULL)
 	{
-		write(1, "(null)", 6);
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
 		return (6);
 	}
 	i = -1;

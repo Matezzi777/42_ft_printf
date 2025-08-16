@@ -6,32 +6,38 @@
 /*   By: maxmart2 <maxmart2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:57:39 by maxmart2          #+#    #+#             */
-/*   Updated: 2025/05/15 05:40:39 by maxmart2         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:49:59 by maxmart2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_putnbr(int n)
+static t_bool	ft_putnbr(int n)
 {
 	char	car;
 
 	if (n == INT32_MIN)
-		write(1, "-2147483648", 11);
+		return (write(1, "-2147483648", 11) != -1);
 	else if (n < 0)
 	{
-		write(1, "-", 1);
-		ft_putnbr(-n);
+		if (write(1, "-", 1) == -1)
+			return (FALSE);
+		return (ft_putnbr(-n));
 	}
 	else if (0 <= n && n <= 9)
 	{
 		car = n + '0';
-		write(1, &car, 1);
+		if (write(1, &car, 1) == -1)
+			return (FALSE);
+		return (TRUE);
 	}
 	else
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		if (!ft_putnbr(n / 10))
+			return (FALSE);
+		if (!ft_putnbr(n % 10))
+			return (FALSE);
+		return (TRUE);
 	}
 }
 
@@ -39,7 +45,8 @@ int	ft_print_integer(int n)
 {
 	int	written;
 
-	ft_putnbr(n);
+	if (!ft_putnbr(n))
+		return (-1);
 	if (n == INT32_MIN)
 		return (11);
 	written = 1;
